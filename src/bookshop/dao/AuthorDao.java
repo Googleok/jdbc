@@ -21,7 +21,7 @@ public class AuthorDao {
 			conn = getConnection();
 			
 			// 4. SQL문 실행
-			String sql = "insert into author values(null, ?)";
+			String sql = "insert into author values(nextval('seq_author'), ?)";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, vo.getName());
@@ -55,7 +55,7 @@ public class AuthorDao {
 		try {
 			conn = getConnection();
 		
-			String sql = "select no, name from author";
+			String sql = "select no, name from author order by no asc";
 			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -96,8 +96,8 @@ public class AuthorDao {
 	private Connection getConnection() throws SQLException{
 		Connection conn = null;
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mariadb://192.168.1.123:3307/webdb";
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://192.168.1.123:5432/webdb";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver Loading failed..." + e);

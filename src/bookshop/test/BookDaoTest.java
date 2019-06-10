@@ -8,13 +8,13 @@ import bookshop.vo.BookVo;
 public class BookDaoTest {
 
 	public static void main(String[] args) {
-//		insert("아리랑", 2L);
-//		insert("젊은그들", 3L);
-//		insert("아프니깐 청춘이다", 4L);
-//		insert("귀천", 5L);
-//		insert("태백산맥", 6L);
-//		insert("풀하우스", 2L);
-		update(1L, "대여가능");
+		insert("아리랑", 3L);
+		insert("젊은그들", 4L);
+		insert("아프니깐 청춘이다", 5L);
+		insert("귀천", 6L);
+		insert("태백산맥", 6L);
+		insert("풀하우스", 6L);
+//		update(1L, "대여가능");
 		getListTest();
 	}
 

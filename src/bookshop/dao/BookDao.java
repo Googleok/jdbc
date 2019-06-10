@@ -29,7 +29,7 @@ public class BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "insert into book values(null, ?, '대여가능', ?);";
+			String sql = "insert into book values(nextval('seq_book'), ?, '대여가능', ?);";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, vo.getTitle());
@@ -182,8 +182,8 @@ public class BookDao {
 	private Connection getConnection() throws SQLException{
 		Connection conn = null;
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mariadb://192.168.1.123:3307/webdb";
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://192.168.1.123:5432/webdb";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver Loading failed..." + e);
